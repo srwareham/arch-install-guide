@@ -14,15 +14,11 @@ Although all options are easily configurable, the final default system will:
 * Have one admin user configured with sudo access, zsh, and trizen
 * Have pre-configured ethernet networking
 
-**Table of Contents**
-
-[TOC]
-
 Creating a Bootable USB Drive
 -------------
 To install arch, we will first create a bootable USB drive. The [official documentation] for this process is very well developed, but we will provide an example using linux or macOS
 
-###From a Mac
+### From a Mac
 
 1. Download the arch linux .iso from https://www.archlinux.org/download/. Keep track of the download path using a bash variable.
    
@@ -59,7 +55,7 @@ To install arch, we will first create a bootable USB drive. The [official docume
    diskutil eject /dev/disk$usb_device_number
    ```
    
-   ###From Linux
+### From Linux
    
 1. Download the arch linux .iso from https://www.archlinux.org/download/. Keep track of the download path using a bash variable.
    
@@ -80,13 +76,13 @@ To install arch, we will first create a bootable USB drive. The [official docume
    usb_device_path=/dev/sda
    ```
 
-3. Write the .iso image to your device using dd. 4m Refers to the block size to be written.
+4. Write the .iso image to your device using dd. 4m Refers to the block size to be written.
 
   ```bash
    dd if="$download_path" of=$usb_device_path bs=4M
    ```
 
-4. Eject your USB drive, you're done! You should always safely eject media before removing it.
+5. Eject your USB drive, you're done! You should always safely eject media before removing it.
 
    ```bash
    eject $usb_device_path
@@ -322,7 +318,7 @@ echo "$hostname" > /etc/hostname
    ```bash
    ls /sys/class/net
    ```
- A device following a naming scheme starting with the letters "en" should be your ethernet adapter (e.g., eno1). This device name is what will be used in the next step. (We are not interested in the device named "lo").
+   A device following a naming scheme starting with the letters "en" should be your ethernet adapter (e.g., eno1). This device name is what will be used in the next step. (We are not interested in the device named "lo").
 
 20. Enable wired networking. Although the internet is working via the live USB, booting into the system will not have internet access without explicitly enabling it. Replace eno1 with the relevant the device name from the previous step
    ```bash
@@ -378,7 +374,7 @@ Configuring an Arch Linux Install
    ```
 ### Configuring an Admin User Account
    
-2. Create an admin user
+1. Create an admin user
 
  Your Arch installation currently only has a root account, this is almost universally a bad idea, let's set up another user. We will use the user name "admin," but you should replace this with your own. We are adding this user to the wheel group because we are going to set it up as a system admin. The default shell will be zsh, which we just installed.
 
@@ -486,14 +482,3 @@ Configuring an Arch Linux Install
    # Add automatic snapshotting with snap-pac
    sudo cp /etc/snap-pac/ root.conf.example subvol_home_config.conf
    ```
-
-6. 
-   
-   
-configure nano
-set nowrap ~/.nanorc
-
-nvidia, zcash, ncdu, 
-
-likes:
-nethogs, htop,
