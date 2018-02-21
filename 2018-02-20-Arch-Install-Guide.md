@@ -1,7 +1,6 @@
 Arch Linux Install Guide 
 =======
 
-![](assets/arch-logo-70x70.png)
 
 This guide is meant to supplement the [official documentation]( https://wiki.archlinux.org/index.php/installation_guide) by demonstrating a start-to-finish system setup.
 
