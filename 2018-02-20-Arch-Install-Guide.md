@@ -281,7 +281,7 @@ Installing Arch Linux
 15. Set the timezone
    ```bash
    # NOTE: replace below timezone with that appropriate to you
-   ln -sf /usr/share/zoneinfo/America/New_york /etc/localtime
+   ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
    hwclock --systohc
    ```
 
