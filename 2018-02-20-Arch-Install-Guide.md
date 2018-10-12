@@ -116,6 +116,7 @@ Installing Arch Linux
 3. (Optional) Install and use reflector to optimize the Arch mirrors your system connects to. This can *greatly* increase your download speeds throughout this guide. Update the country information to fit your situation.
 
    ```bash
+   pacman -S reflector
    reflector --verbose --country 'United States' -l 200 --sort rate --save /etc/pacman.d/mirrorlist
    ```
 
@@ -257,10 +258,10 @@ Installing Arch Linux
    
    # BTRFS Root Partition /dev/sda2 LABEL=Arch Linux
    # Root subvolume
-   UUID=d84a9588-276b-4df5-8282-4f1426a87090       /               btrfs           rw,nodev,relatime,ssd,discard,space_cache,subvol=/subvol_root 0 0
+   UUID=d84a9588-276b-4df5-8282-4f1426a87090       /               btrfs           rw,nodev,relatime,ssd,discard,space_cache,subvol=subvol_root 0 0
    
    # Home subvolume
-   UUID=d84a9588-276b-4df5-8282-4f1426a87090       /home           btrfs           rw,nosuid,nodev,relatime,ssd,discard,space_cache,subvol=/subvol_home  0 0
+   UUID=d84a9588-276b-4df5-8282-4f1426a87090       /home           btrfs           rw,nosuid,nodev,relatime,ssd,discard,space_cache,subvol=subvol_home  0 0
    
    # Snapshot subvolumes mounted where expected by snapper
    # Root snapshots
@@ -348,7 +349,7 @@ echo "$hostname" > /etc/hostname
    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
    # Modify our grub config to boot the correct BTRFS subvolume
    # Adds "rootflags=subvol=subvol_root" to GRUB_CMDLINE_LINUX_DEFAULT  in /etc/default/grub
-   sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="/GRUB_CMDLINE_LINUX_DEFAULT="rootflags=subvol-subvol_root /g' /etc/default/grub
+   sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT="/GRUB_CMDLINE_LINUX_DEFAULT="rootflags=subvol=subvol_root /g' /etc/default/grub
    # Generate our grub.cfg
    grub-mkconfig -o /boot/grub/grub.cfg
    ```
@@ -360,6 +361,7 @@ echo "$hostname" > /etc/hostname
 25. Reboot and confirm you are able to login as the root user (note, the root user will not be acessible via ssh due to openssh default settings--create a new user before rebooting if you wish to continue remotely)
 
    ```bash
+   exit
    reboot
    ```
 
