@@ -426,7 +426,7 @@ Configuring an Arch Linux Install
    sudo umount /.snapshots
    sudo rmdir /.snapshots
    # Create an initial config file for the root subvolme
-   sudo snapper -c subvol_root_config create-config /
+   sudo snapper -c subvol_root create-config /
    # Delete the subvolume created by snapper
    sudo btrfs subvolume delete /.snapshots
    # Restore the subvol_root_snapshots subvolume
@@ -440,7 +440,7 @@ Configuring an Arch Linux Install
    sudo umount /home/.snapshots
    sudo rmdir /home/.snapshots
    # Create an initial config file for the root subvolme
-   sudo snapper -c subvol_home_config create-config /home
+   sudo snapper -c subvol_home create-config /home
    # Delete the subvolume created by snapper
    sudo btrfs subvolume delete /home/.snapshots
    # Restore the subvol_root_snapshots subvolume
@@ -452,36 +452,36 @@ Configuring an Arch Linux Install
    
    ```bash
    # Change max space limit from 50% of disk space to 15%
-   sudo sed -i 's/SPACE_LIMIT="0.5"/SPACE_LIMIT="0.15"/g' /etc/snapper/configs/subvol_root_config
+   sudo sed -i 's/SPACE_LIMIT="0.5"/SPACE_LIMIT="0.15"/g' /etc/snapper/configs/subvol_root
    # Change max count of "number"" snapshots to 20
-   sudo sed -i 's/NUMBER_LIMIT="50"/NUMBER_LIMIT="20"/g' /etc/snapper/configs/subvol_root_config
+   sudo sed -i 's/NUMBER_LIMIT="50"/NUMBER_LIMIT="20"/g' /etc/snapper/configs/subvol_root
    # Keep 12 hourly snapshots
-   sudo sed -i 's/TIMELINE_LIMIT_HOURLY="10"/TIMELINE_LIMIT_HOURLY="12"/g' /etc/snapper/configs/subvol_root_config
+   sudo sed -i 's/TIMELINE_LIMIT_HOURLY="10"/TIMELINE_LIMIT_HOURLY="12"/g' /etc/snapper/configs/subvol_root
    # Keep 7 daily snapshots
-   sudo sed -i 's/TIMELINE_LIMIT_DAILY="10"/TIMELINE_LIMIT_DAILY="7"/g' /etc/snapper/configs/subvol_root_config 
+   sudo sed -i 's/TIMELINE_LIMIT_DAILY="10"/TIMELINE_LIMIT_DAILY="7"/g' /etc/snapper/configs/subvol_root
    # Keep 1 monthly snapshot
-   sudo sed -i 's/TIMELINE_LIMIT_MONTHLY="10"/TIMELINE_LIMIT_MONTHLY="1"/g' /etc/snapper/configs/subvol_root_config 
+   sudo sed -i 's/TIMELINE_LIMIT_MONTHLY="10"/TIMELINE_LIMIT_MONTHLY="1"/g' /etc/snapper/configs/subvol_root
    # Keep no annual snapshots
-   sudo sed -i 's/TIMELINE_LIMIT_YEARLY="10"/TIMELINE_LIMIT_YEARLY="0"/g' /etc/snapper/configs/subvol_root_config
+   sudo sed -i 's/TIMELINE_LIMIT_YEARLY="10"/TIMELINE_LIMIT_YEARLY="0"/g' /etc/snapper/configs/subvol_root
    # Add automatic snapshotting with snap-pac
-   sudo cp /etc/snap-pac/ root.conf.example subvol_root_config.conf
-   echo 'SNAPSHOT="yes"' | sudo tee -a /etc/snapper/configs/subvol_root_config > /dev/null 
+   sudo cp /etc/snap-pac/ root.conf.example subvol_root.conf
+   echo 'SNAPSHOT="yes"' | sudo tee -a /etc/snapper/configs/subvol_root > /dev/null 
    ```
 5. Configure home snapshots config
 
    ```bash
    # Change max space limit from 50% of disk space to 15%
-   sudo sed -i 's/SPACE_LIMIT="0.5"/SPACE_LIMIT="0.15"/g' /etc/snapper/configs/subvol_home_config
+   sudo sed -i 's/SPACE_LIMIT="0.5"/SPACE_LIMIT="0.15"/g' /etc/snapper/configs/subvol_home
    # Change max count of "number"" snapshots to 20
-   sudo sed -i 's/NUMBER_LIMIT="50"/NUMBER_LIMIT="20"/g' /etc/snapper/configs/subvol_home_config
+   sudo sed -i 's/NUMBER_LIMIT="50"/NUMBER_LIMIT="20"/g' /etc/snapper/configs/subvol_home
    # Keep 12 hourly snapshots
-   sudo sed -i 's/TIMELINE_LIMIT_HOURLY="10"/TIMELINE_LIMIT_HOURLY="12"/g' /etc/snapper/configs/subvol_home_config
+   sudo sed -i 's/TIMELINE_LIMIT_HOURLY="10"/TIMELINE_LIMIT_HOURLY="12"/g' /etc/snapper/configs/subvol_home
    # Keep 7 daily snapshots
-   sudo sed -i 's/TIMELINE_LIMIT_DAILY="10"/TIMELINE_LIMIT_DAILY="7"/g' /etc/snapper/configs/subvol_home_config 
+   sudo sed -i 's/TIMELINE_LIMIT_DAILY="10"/TIMELINE_LIMIT_DAILY="7"/g' /etc/snapper/configs/subvol_home
    # Keep 1 monthly snapshot
-   sudo sed -i 's/TIMELINE_LIMIT_MONTHLY="10"/TIMELINE_LIMIT_MONTHLY="1"/g' /etc/snapper/configs/subvol_home_config 
+   sudo sed -i 's/TIMELINE_LIMIT_MONTHLY="10"/TIMELINE_LIMIT_MONTHLY="1"/g' /etc/snapper/configs/subvol_home
    # Keep no annual snapshots
-   sudo sed -i 's/TIMELINE_LIMIT_YEARLY="10"/TIMELINE_LIMIT_YEARLY="0"/g' /etc/snapper/configs/subvol_home_config
+   sudo sed -i 's/TIMELINE_LIMIT_YEARLY="10"/TIMELINE_LIMIT_YEARLY="0"/g' /etc/snapper/configs/subvol_home
    # Add automatic snapshotting with snap-pac
-   sudo cp /etc/snap-pac/ root.conf.example subvol_home_config.conf
+   sudo cp /etc/snap-pac/ root.conf.example subvol_home.conf
    ```
