@@ -124,7 +124,7 @@ Installing Arch Linux
 
   ```bash
    # Install openssh while updating source repositories
-   pacman -Sy openssh
+   pacman -S openssh
    # Set a password for the USB's root user (required for logging in via ssh)
    # Note: this password will not apply to the installed system, only the temporary live USB
    passwd
@@ -155,7 +155,7 @@ Installing Arch Linux
 
    ```bash  
    # Enter parted interactive mode
-   parted $target_device`
+   parted $target_device
    ```
 
    The below commands will be in parted interactive mode where terminal commands are prefaced by "(parted)"
@@ -201,13 +201,13 @@ Installing Arch Linux
    ```bash
    cd /mnt/new_system_root/
    # Root ("/") subvolume
-   btrfs subvolume create /subvol_root
+   btrfs subvolume create subvol_root
    # Home ("/home") subvolume
-   btrfs subvolume create /subvol_home
+   btrfs subvolume create subvol_home
    # Root snapshots/backup subvolume
-   btrfs subvolume create /subvol_root_snapshots
+   btrfs subvolume create subvol_root_snapshots
    # Home snapshots/backup subvolume
-   btrfs subvolume create /subvol_home_snapshots
+   btrfs subvolume create subvol_home_snapshots
    cd /mnt
    # Unmount the BTRFS partition so we can mount only the root partition for our Arch install
    umount /mnt/new_system_root
