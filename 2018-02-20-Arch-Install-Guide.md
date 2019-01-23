@@ -11,7 +11,7 @@ Although all options are easily configurable, the final default system will:
  * A [GPT](https://wiki.archlinux.org/index.php/Partitioning#GUID_Partition_Table)  [EFI](https://wiki.archlinux.org/index.php/EFI_System_Partition) partition for [UEFI](https://wiki.archlinux.org/index.php/Unified_Extensible_Firmware_Interface) booting
  * [Intel microcode](https://wiki.archlinux.org/index.php/Microcode#Enabling_Intel_microcode_updates) enabled
 * Use a single [BTRFS](https://wiki.archlinux.org/index.php/Btrfs) partition for root/home data storage with [snapper](https://wiki.archlinux.org/index.php/Snapper) for automatic backups and simple full-system restores
-* Have one admin user configured with sudo access, zsh, and trizen
+* Have one admin user configured with sudo access, zsh, and pikaur
 * Have pre-configured ethernet networking
 
 Creating a Bootable USB Drive
@@ -403,12 +403,13 @@ Configuring an Arch Linux Install
    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
    ```
 
-5. Setup [Trizen](https://github.com/trizen/trizen). AUR helpers can be immensely convenient for installing user contributed packages. Keep in mind AUR packages are not official and can have their bugs/issues.
+5. Setup [pikaur](https://github.com/actionless/pikaur). AUR helpers can be immensely convenient for installing user contributed packages. Keep in mind AUR packages are not official and can have their bugs/issues.
    ```bash
-   install trizen
-   git clone https://aur.archlinux.org/trizen.git
-   cd trizen
-   makepkg -si
+   # install pikaur
+   cd /tmp
+   git clone https://aur.archlinux.org/pikaur.git
+   cd pikaur
+   makepkg -fsri
    ```
 
 ### Configuring Snapper and BTRFS snapshots
