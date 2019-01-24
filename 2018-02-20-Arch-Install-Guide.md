@@ -464,7 +464,7 @@ Configuring an Arch Linux Install
    # Keep no annual snapshots
    sudo sed -i 's/TIMELINE_LIMIT_YEARLY="10"/TIMELINE_LIMIT_YEARLY="0"/g' /etc/snapper/configs/subvol_root
    # Add automatic snapshotting with snap-pac
-   sudo cp /etc/snap-pac/ root.conf.example subvol_root.conf
+   sudo cp /etc/snap-pac/root.conf.example /etc/snap-pac/subvol_root.conf 
    echo 'SNAPSHOT="yes"' | sudo tee -a /etc/snapper/configs/subvol_root > /dev/null 
    ```
 5. Configure home snapshots config
@@ -483,5 +483,5 @@ Configuring an Arch Linux Install
    # Keep no annual snapshots
    sudo sed -i 's/TIMELINE_LIMIT_YEARLY="10"/TIMELINE_LIMIT_YEARLY="0"/g' /etc/snapper/configs/subvol_home
    # Add automatic snapshotting with snap-pac
-   sudo cp /etc/snap-pac/ root.conf.example subvol_home.conf
+   sudo cp /etc/snap-pac/root.conf.example /etc/snap-pac/subvol_home.conf 
    ```
