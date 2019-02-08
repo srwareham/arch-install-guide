@@ -400,7 +400,12 @@ Configuring an Arch Linux Install
 4. Setup [oh my zsh](https://github.com/robbyrussell/oh-my-zsh).
 
    ```bash
+   # Download and install oh-my-zsh
    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+   # Change zsh theme to dst
+   sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="dst"/g' $HOME/.zshrc
+   # Set oh my zsh to not auto update
+   sed -i 's/# DISABLE_AUTO_UPDATE="true"/DISABLE_AUTO_UPDATE="true"/g' $HOME/.zshrc
    ```
 
 5. Setup [pikaur](https://github.com/actionless/pikaur). AUR helpers can be immensely convenient for installing user contributed packages. Keep in mind AUR packages are not official and can have their bugs/issues.
