@@ -390,6 +390,15 @@ Configuring an Arch Linux Install
    sed -i 's/#%wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /etc/sudoers
    ```
 
+2. Optmize pacman (makepkg) compillation settings to use as many jobs as threads available.
+
+
+  ```bash
+
+   sudo sed -i 's/#MAKEFLAGS="-j2"/MAKEFLAGS="-j$(nproc)"/g' /etc/makepkg.conf
+   ```
+
+
 3. Login to our new user. **From this point on, we don't want to be logged in as root if we don't need to be. Instead, we will use our new admin account, "admin," and simply use `sudo` when necessary.**
 
   ```bash
